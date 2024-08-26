@@ -3,31 +3,39 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --button-bg-color: #000000; /* Warna button di mode light */
+  --button-text-color: #ffffff; /* Warna teks button di mode light */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.dark {
+  --bg-color: #1a202c;
+  --text-color: #f7fafc;
+  --button-bg-color: #2d3748; /* Warna button di mode dark */
+  --button-text-color: #f7fafc; /* Warna teks button di mode dark */
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.5s, color 0.5s;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+button {
+  background-color: var(--button-bg-color);
+  color: var(--button-text-color);
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: background-color 0.5s, color 0.5s;
+}
+
+button:hover {
+  background-color: var(--button-hover-bg-color, #4a5568); /* Hover mode light */
+}
+
+.dark button:hover {
+  background-color: var(--button-hover-bg-color-dark, #4a5568); /* Hover mode dark */
 }
